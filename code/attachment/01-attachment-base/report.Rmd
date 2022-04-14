@@ -1,10 +1,26 @@
-setwd("Job/ARCA/course-open-science/code/attachment/01-attachment-base/")
-rm(list = ls())
+---
+title: "Report"
+author: "ARCA"
+date: "4/14/2022"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
+rm(list = ls())
+```
+
+# Introduzione
+
+L'obbiettivo dello studio è di valutare la relazione tra attaccamento verso la madre nei bambini del 3° e 4° anno di scuola primaria.
+
+# Analisi Descrittive
+
+```{r}
 my_data <-readxl::read_excel("att-quest.xlsx")
 my_data <- as.data.frame(my_data)
-
-str(my_data)
 
 # Data munging
 
@@ -18,7 +34,7 @@ my_data$genere<-factor(my_data$genere)
 my_data$ssm1 = abs(my_data$ssm1 - 5)
 my_data$ssm3 = abs(my_data$ssm3 - 5)
 my_data$ssm4 = abs(my_data$ssm4 - 5)
-my_data$ssm9 = abs(my_data$ssm19 - 5)
+my_data$ssm9 = abs(my_data$ssm9 - 5)
 my_data$ssm10 = abs(my_data$ssm10 - 5)
 my_data$ssm13 = abs(my_data$ssm13 - 5)
 my_data$ssm15 = abs(my_data$ssm15 - 5)
@@ -39,46 +55,85 @@ my_data$int_tot<-my_data$sdq3+my_data$sdq6+my_data$sdq8 +my_data$sdq11+ my_data$
 my_data$ext_tot<-my_data$sdq2+my_data$sdq5+ my_data$sdq7+my_data$sdq10 +my_data$sdq12+my_data$sdq15 +
   my_data$sdq18+my_data$sdq21+ my_data$sdq22 +my_data$sdq25
 
-my_data =my_data[, c("id", "classe", "genere", "età", "ssm_tot", "int_tot", "ext_tot")]
+my_data =my_data[, c("id", "classe", "genere", "ssm_tot", "int_tot", "ext_tot")]
 
-# Descriptive stat
+```
+
+Struttura dei dati.
+
+```{r, echo=TRUE}
+str(my_data)
+```
+
+Summary delle variabili.
+
+```{r, echo=TRUE}
 summary(my_data)
-table(my_data$genere, my_data$classe) 
+```
 
+Numero di bambini per genere e classe
+
+```{r}
+table(my_data$genere, my_data$classe)
+```
+
+Distribuzione problemi esternalizzanti.
+
+```{r}
 library('ggplot2')
 theme_set(theme_bw())
 
 ggplot(my_data) +
   geom_bar(aes(x = ext_tot), fill = "firebrick", alpha = .8)
-sd(my_data$ext_tot)
+```
 
+Probelmi esternalizzanti a seconda di classe e genere
+```{r, echo = TRUE}
+# Media
+tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = mean)
+
+# SD
+tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = sd)
+```
+
+```{r}
 ggplot(my_data) +
   geom_bar(aes(x = ext_tot), fill = "firebrick", alpha = .8)+
   facet_grid(classe~genere)
+```
 
-tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = mean)
-tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = sd)
+Relazione problemi esternalizzanti e sicurezza verso la madre in base alla classe e genere.
 
-ggplot(my_data) +
-  geom_bar(aes(x = ext_tot), fill = "firebrick", alpha = .8)+
-  facet_grid(classe~genere)
-
-tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = mean)
-tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = sd)
-
+```{r}
 ggplot(my_data) +
   geom_jitter(aes(x = ssm_tot, y = ext_tot), width= .01, height = .2) +
   facet_grid(classe~genere)
+```
 
-# Models
+# Analisi Statistiche
+
+Modello interazione a tre vie.
+
+```{r, echo=TRUE}
 fit <-lm(ext_tot ~ ssm_tot * genere * classe, data = my_data)
 summary(fit)
+```
 
-anova(fit)
+Test effetti.
+
+```{r, echo=TRUE}
 car::Anova(fit)
+```
+
+Post hoc tests.
+
+```{r, echo=TRUE}
 int_emmeans <- emmeans::emtrends(fit, pairwise ~ classe*genere, var = 'ssm_tot', adjust = "mvt")
 int_emmeans
+```
 
+
+```{r}
 ggplot(as.data.frame(effects::effect("ssm_tot * genere * classe", fit, xlev = 20))) +
   geom_ribbon(aes(x= ssm_tot, ymin = lower, ymax=upper, fill =genere), alpha = .4) +
   geom_line(aes(x= ssm_tot, y = fit, color =genere), size = 1.2) +
@@ -90,6 +145,5 @@ ggplot(as.data.frame(effects::effect("ssm_tot * genere * classe", fit, xlev = 20
            position = position_jitter(width = .02, height = 0), sides = "b") +
   facet_grid(classe~.) +
   theme(legend.position = "top")
-
-
+```
 
