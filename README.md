@@ -9,7 +9,7 @@
 
 Questa è la repository principale del corso dove ci saranno tutte le
 informazioni, slides, link e materiale. Per consultare direttamente il
-materiale è possibile accedere al sito del corso https://arca-dpss.github.io/course-open-science/
+materiale è possibile accedere al sito del corso https://arca-dpss.github.io/course-open-science/.
 
 # ARCA (Applied Research Courses Academy)
 
