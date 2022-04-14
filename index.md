@@ -1,5 +1,5 @@
 ---
-course_title: "Strumenti per l’Open Science: Come rendere la propria ricerca scientifica fruibile e riproducibile"
+course_title: "Strumenti per l’Open Science"
 author_name: Davide Massidda 
 ---
 
