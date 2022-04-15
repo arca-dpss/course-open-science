@@ -67,10 +67,9 @@ ggplot(my_data) +
 fit <-lm(ext_tot ~ ssm_tot * gender * grade, data = my_data)
 summary(fit)
 
-anova(fit)
 car::Anova(fit)
-int_emmeans <- emmeans::emtrends(fit, pairwise ~ grade*gender, var = 'ssm_tot', adjust = "mvt")
-int_emmeans
+ext_emmeans <- emmeans::emtrends(fit, pairwise ~ grade*gender, var = 'ssm_tot', adjust = "mvt")
+ext_emmeans
 
 ggplot(as.data.frame(effects::effect("ssm_tot * gender * grade", fit, xlev = 20))) +
   geom_ribbon(aes(x= ssm_tot, ymin = lower, ymax=upper, fill =gender), alpha = .4) +

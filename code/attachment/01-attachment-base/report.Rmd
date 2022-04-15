@@ -128,8 +128,8 @@ car::Anova(fit)
 Post hoc tests.
 
 ```{r, echo=TRUE}
-int_emmeans <- emmeans::emtrends(fit, pairwise ~ grade*gender, var = 'ssm_tot', adjust = "mvt")
-int_emmeans
+ext_emmeans <- emmeans::emtrends(fit, pairwise ~ grade*gender, var = 'ssm_tot', adjust = "mvt")
+ext_emmeans
 ```
 
 
