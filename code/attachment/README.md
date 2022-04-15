@@ -1,8 +1,16 @@
 # Attachment 
 
-## Study
+## Project Versions
+
+- Basic ([Download](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-open-science/tree/main/code/attachment/01-attachment-base)). Simple script and report.
+- Medium ([Download](https://github.com/arca-dpss/course-open-science/tree/main/code/attachment/02-attachment-medium)). RStudio project, functional style, and renv.
+- Advanced ([Download](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/arca-dpss/course-open-science/tree/main/code/attachment/03-attachment-advanced)). Using R-package project structure, renv, targets, and Docker.
+
+
+## Project Information
 
 The aim of the study is to assess the relationship between attachment towards the mother and social emotional problems in children in the 3rd and 4th year of primary school.
+
 
 ## Data
 
