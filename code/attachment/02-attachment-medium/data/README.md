@@ -1,18 +1,14 @@
-# Attachment 
+# Data Description
 
-## Study
-
-The aim of the study is to assess the relationship between attachment towards the mother and social emotional problems in children in the 3rd and 4th year of primary school.
-
-## Data
+The data is composed by 143 observations on 43 columns.
 
 In the dataset we have the following variables:
 
-- `id`: Children id code
-- `grade`: Children school grade (third and fourth grade))
-- `gender`: Children gender (0 = Male; 1 = Female)
-- `ssm*` (da 1 a 15): Mother Security Scale (SS) items
-- `sdq*` (da 1 a 25): Strength and Difficulties Questionnaire items
+- `id`: Character variable indicating children id code.
+- `grade`: Numeric variable indicating children school grade (3 = third grade; 4 = fourth grade)).
+- `gender`: Numeric variable indicating children gender (0 = Male; 1 = Female).
+- `ssm*` (da 1 a 15): Numeric variable indicating Mother Security Scale (SS) items response (range values 1-4).
+- `sdq*` (da 1 a 25): Numeric variable indicating Strength and Difficulties Questionnaire items (range values 0-2).
 
 ## Scoring Questionnaires
 
