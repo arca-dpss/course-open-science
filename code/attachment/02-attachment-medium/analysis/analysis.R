@@ -29,7 +29,7 @@ my_data <- data_munging(data_raw)
 str(my_data)
 
 # Save munged data
-save(my_data, file = "outcomes/data_munged.rda")
+save(my_data, file = "outputs/my_data.rda")
 
 #----    03 Descriptive Statistics    ----
 
@@ -56,7 +56,7 @@ plot_scatter(my_data, x = ssm_tot, y = ext_tot) +
 
 # Fit the model
 fit <-lm(ext_tot ~ ssm_tot * gender * grade, data = my_data)
-save(fit, file = "outcomes/fit.rda")
+save(fit, file = "outputs/fit.rda")
 
 summary(fit)
 
@@ -65,7 +65,7 @@ car::Anova(fit)
 
 # Post hoc 
 ext_emmeans <- emmeans::emtrends(fit, pairwise ~ gender*grade, var = 'ssm_tot', adjust = "mvt")
-save(ext_emmeans, file = "outcomes/ext_emmeans.rda")
+save(ext_emmeans, file = "outputs/ext_emmeans.rda")
 
 ext_emmeans
 

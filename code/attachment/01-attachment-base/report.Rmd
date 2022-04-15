@@ -87,7 +87,7 @@ ggplot(my_data) +
   geom_bar(aes(x = ext_tot), fill = "firebrick", alpha = .8)
 ```
 
-Externalizing problems according to gender nd grade.
+Externalizing problems according to gender and grade.
 ```{r, echo = TRUE}
 # Mean
 tapply(my_data$ext_tot, INDEX = list(my_data$gender, my_data$grade), FUN = mean)
