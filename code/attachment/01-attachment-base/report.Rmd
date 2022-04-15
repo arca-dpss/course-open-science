@@ -12,11 +12,11 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 rm(list = ls())
 ```
 
-# Introduzione
+# Introduction
 
-L'obbiettivo dello studio è di valutare la relazione tra attaccamento verso la madre nei bambini del 3° e 4° anno di scuola primaria.
+The aim of the study is to assess the relationship between attachment towards the mother and   social emotional problems in children in the 3rd and 4th year of primary school.
 
-# Analisi Descrittive
+# Descriptive Statistics
 
 ```{r}
 my_data <-readxl::read_excel("att-quest.xlsx")
@@ -25,8 +25,8 @@ my_data <- as.data.frame(my_data)
 # Data munging
 
 my_data$id = factor(my_data$id)
-my_data$classe = factor(my_data$classe)
-my_data$genere<-factor(my_data$genere)
+my_data$grade = factor(my_data$grade)
+my_data$gender<-factor(my_data$gender)
 
 # Compute questionnaire score
 
@@ -55,29 +55,29 @@ my_data$int_tot<-my_data$sdq3+my_data$sdq6+my_data$sdq8 +my_data$sdq11+ my_data$
 my_data$ext_tot<-my_data$sdq2+my_data$sdq5+ my_data$sdq7+my_data$sdq10 +my_data$sdq12+my_data$sdq15 +
   my_data$sdq18+my_data$sdq21+ my_data$sdq22 +my_data$sdq25
 
-my_data =my_data[, c("id", "classe", "genere", "ssm_tot", "int_tot", "ext_tot")]
+my_data =my_data[, c("id", "grade", "gender", "ssm_tot", "int_tot", "ext_tot")]
 
 ```
 
-Struttura dei dati.
+Data structure.
 
 ```{r, echo=TRUE}
 str(my_data)
 ```
 
-Summary delle variabili.
+Variables summary.
 
 ```{r, echo=TRUE}
 summary(my_data)
 ```
 
-Numero di bambini per genere e classe
+Number of children according to gender and grade.
 
 ```{r}
-table(my_data$genere, my_data$classe)
+table(my_data$gender, my_data$grade)
 ```
 
-Distribuzione problemi esternalizzanti.
+Externalizing problems distribution.
 
 ```{r}
 library('ggplot2')
@@ -87,39 +87,39 @@ ggplot(my_data) +
   geom_bar(aes(x = ext_tot), fill = "firebrick", alpha = .8)
 ```
 
-Probelmi esternalizzanti a seconda di classe e genere
+Externalizing problems according to gender nd grade.
 ```{r, echo = TRUE}
-# Media
-tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = mean)
+# Mean
+tapply(my_data$ext_tot, INDEX = list(my_data$gender, my_data$grade), FUN = mean)
 
 # SD
-tapply(my_data$ext_tot, INDEX = list(my_data$genere, my_data$classe), FUN = sd)
+tapply(my_data$ext_tot, INDEX = list(my_data$gender, my_data$grade), FUN = sd)
 ```
 
 ```{r}
 ggplot(my_data) +
   geom_bar(aes(x = ext_tot), fill = "firebrick", alpha = .8)+
-  facet_grid(classe~genere)
+  facet_grid(grade~gender)
 ```
 
-Relazione problemi esternalizzanti e sicurezza verso la madre in base alla classe e genere.
+Relation between externalizing problems and mother attachment according to gender and grade.
 
 ```{r}
 ggplot(my_data) +
   geom_jitter(aes(x = ssm_tot, y = ext_tot), width= .01, height = .2) +
-  facet_grid(classe~genere)
+  facet_grid(grade~gender)
 ```
 
-# Analisi Statistiche
+# Statistical Analysis
 
-Modello interazione a tre vie.
+Three-way interaction linear model.
 
 ```{r, echo=TRUE}
-fit <-lm(ext_tot ~ ssm_tot * genere * classe, data = my_data)
+fit <-lm(ext_tot ~ ssm_tot * gender * grade, data = my_data)
 summary(fit)
 ```
 
-Test effetti.
+Model effects.
 
 ```{r, echo=TRUE}
 car::Anova(fit)
@@ -128,22 +128,22 @@ car::Anova(fit)
 Post hoc tests.
 
 ```{r, echo=TRUE}
-int_emmeans <- emmeans::emtrends(fit, pairwise ~ classe*genere, var = 'ssm_tot', adjust = "mvt")
+int_emmeans <- emmeans::emtrends(fit, pairwise ~ grade*gender, var = 'ssm_tot', adjust = "mvt")
 int_emmeans
 ```
 
 
 ```{r}
-ggplot(as.data.frame(effects::effect("ssm_tot * genere * classe", fit, xlev = 20))) +
-  geom_ribbon(aes(x= ssm_tot, ymin = lower, ymax=upper, fill =genere), alpha = .4) +
-  geom_line(aes(x= ssm_tot, y = fit, color =genere), size = 1.2) +
-  geom_rug(data = my_data[my_data$genere == 0,],
-           aes(x= ssm_tot, color = genere, y = ext_tot), size = 1.2, alpha = .7,
+ggplot(as.data.frame(effects::effect("ssm_tot * gender * grade", fit, xlev = 20))) +
+  geom_ribbon(aes(x= ssm_tot, ymin = lower, ymax=upper, fill =gender), alpha = .4) +
+  geom_line(aes(x= ssm_tot, y = fit, color =gender), size = 1.2) +
+  geom_rug(data = my_data[my_data$gender == 0,],
+           aes(x= ssm_tot, color = gender, y = ext_tot), size = 1.2, alpha = .7,
            position = position_jitter(width = .02, height = 0), sides = "t") +
-  geom_rug(data = my_data[my_data$genere == 1,],
-           aes(x= ssm_tot, color = genere, y = ext_tot), size = 1.2, alpha = .7,
+  geom_rug(data = my_data[my_data$gender == 1,],
+           aes(x= ssm_tot, color = gender, y = ext_tot), size = 1.2, alpha = .7,
            position = position_jitter(width = .02, height = 0), sides = "b") +
-  facet_grid(classe~.) +
+  facet_grid(grade~.) +
   theme(legend.position = "top")
 ```
 

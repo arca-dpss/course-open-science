@@ -2,41 +2,42 @@
 
 ## Study
 
-L'obbiettivo dello studio è di valutare la relazione tra attaccamento verso la madre nei bambini del 3° e 4° anno di scuola primaria.
+The aim of the study is to assess the relationship between attachment towards the mother and   social emotional problems in children in the 3rd and 4th year of primary school.
 
 ## Data
-Nel dataset abbiamo le seguenti variabili
 
-- `id`: codice identificativo  di ogni bambino
-- `classe`: classe frequentata dal bambino (3°anno o 4°anno scuole primarie)
-- `genere`: genere del bambino (0=M; 1=F)
-- `ssm*` (da 1 a 15): item del questionario sicurezza materna
-- `sdq*` (da 1 a 25): idem del questionario problemi internalizzanti e esternalizzanti
+In the dataset we have the following variables:
 
+- `id`: Children id code
+- `grade`: Children school grade (third and fourth grade))
+- `gender`: Children gender (0 = Male; 1 = Female)
+- `ssm*` (da 1 a 15): Mother Security Scale (SS) items
+- `sdq*` (da 1 a 25): Strength and Difficulties Questionnaire items
 
-## Scoring Questionari
+## Scoring Questionnaires
 
-### SSM (Security Scale Mother)
+###  Mother Security Scale (SS)
 
-Questionario con 15 item a risposte su scala likert a 4 punti.Le risposte sono codificate come 1-2-3-4.
+Questionnaire with 15 items on a 4-point likert scale. The answers are coded as 1-2-3-4.
 
-Il punteggio totale è dato dalla media degli item. Punteggi più alti indicano maggiore sicurezza.
+The total score is given by the average of the items. Higher scores indicate higher lvels of security.
 
-Tuttavia per costruire il punteggio finale è necessario invertire i punteggi degli item 1, 3, 4, 9, 10, 13, e 15.
+To construct the final score, it is necessary to invert the scores of items 1, 3, 4, 9, 10, 13, and 15. That is: 
 
-Ovvero: 1-->4; 2-->3; 3-->2; 4-->1.
+> 1 --> 4<br>
+> 2 --> 3<br> 3 --> 2<br> 4 --> 1
 
-### SDQ (Strength and Difficulties Questionnaire)
+### Strength and Difficulties Questionnaire (SDQ)
 
-Questionario con 25 item a risposte su scala likert a 3 punti. Le risposte sono codificate come 0-1-2.
+Questionnaire with 25 items on a 3-point likert scale. The answers are coded as 0-1-2.
 
-I punteggi totali sono dati dalla somma degli item. Punteggi più alti indicano maggiori problemi.
+The total score is given by the sum of the items. Higher scores indicate more problems.
 
-Tuttavia per costruire il punteggio finale è necessario invertire i punteggi degli item 7, 11, 14, 21, 25.
+To construct the final score it is necessary to invert the scores of items 7, 11, 14, 21, 25. That is:
 
-Ovvero: 0-->2; 1-->1; 2-->0.
+> 0-->2<br> 1-->1<br> 2-->0
 
-Abbiamo 5 sottoscale formate dagli item:
+We have 5 sub-scales formed by the items:
 
 - **Emotion**	=	3, 8, 13, 16, 24
 - **Conduct**	=	5, 7, 12, 18, 22
@@ -44,7 +45,7 @@ Abbiamo 5 sottoscale formate dagli item:
 - **Peer**	=	6, 11, 14, 19, 23
 - **Prosoc**	=	1, 4, 9, 17, 20
 
-Due punteggi riassuntivi vengono creati unendo le sottoscale:
+Two summary scores are created by adding the sub-scales:
 
 - **Internalizing** = emotion + peer
 - **Externalizing** = hyper + conduct
