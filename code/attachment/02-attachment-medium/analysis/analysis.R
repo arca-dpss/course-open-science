@@ -25,7 +25,7 @@ str(data_raw)
 
 #----    02 Data Munging    ----
 
-my_data <- munge_data(data_raw)
+my_data <- data_munging(data_raw)
 str(my_data)
 
 # Save munged data
