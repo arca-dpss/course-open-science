@@ -1,0 +1,8 @@
+# R auxiliary files
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# Flders
+outcomes/
