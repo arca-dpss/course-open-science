@@ -24,13 +24,12 @@ L’Open Science sta diventando il gold standard per la ricerca scientifica di a
 
 # Requisiti
 
-Consigliamo di installare i seguenti software prima dell'inizio el corso.
+Consigliamo di installare i seguenti software prima dell'inizio del corso.
 
-- R e Rstudio
-- Git
-- Docker
-
-[TODO: add instructions]
+- R (https://cran.rstudio.com/)
+- RStudio (https://www.rstudio.com/products/rstudio/download/)
+- Git (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- Docker (https://docs.docker.com/get-docker/)
 
 # Materiali
 
