@@ -6,12 +6,12 @@ Author: c(person(given = "My-name",
            family = "My-surname",
            role = c("aut", "cre"),
            email = "myself@email.com",
-           comment = c(ORCID = "my-orcid"),
+           comment = c(ORCID = "my-orcid")),
           person(given = "colleague-name",
            family = "colleague-surname",
            role = c("aut"),
            email = "colleague@email.com",
-           comment = c(ORCID = "colleague-orcid"))
+           comment = c(ORCID = "colleague-orcid")))
 Maintainer: The package maintainer <myself@somewhere.net>
 Description: In this repository we collect all the materials of the study 
   *“My Nobel Prize-Winning article”*. The aim of the study is to assess the relationship 
