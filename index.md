@@ -18,9 +18,17 @@ L’Open Science sta diventando il gold standard per la ricerca scientifica di a
 
 # Orari
 
-- 26 Aprile 9:00 - 13:00 e 14:00-17:00
-- 27 Aprile 9:00 - 13:00 e 14:00-17:00
-- 28 Aprile 9:00 - 13:00 e 14:00-16:00
+<div style="text-align:center">
+
+| Giorno | Orario | Aula (CLA)|
+|:-------|:------:|:-----:|
+| Lunedì 20 giugno | 9:00 - 13:00 e 14:00 - 18:00 | LAB 2A |
+| Martedì 21 giugno | 9:00 - 13:00 e 14:00 - 18:00 | LAB 3D |
+| Mercoledì 22 giugno | 14:00 - 18:00 | LAB 3D |
+
+</div>
+
+
 
 # Requisiti
 
@@ -34,7 +42,7 @@ Consigliamo di installare i seguenti software prima dell'inizio del corso.
 # Materiali
 
 - [TODO: add link to slides]
-- [TODO: add link to book]
+- The Open Science Manual https://arca-dpss.github.io/manual-open-science/ ([PDF](https://arca-dpss.github.io/manual-open-science/manual-open-science.pdf))
 - [TODO: add link to exercises]
 - [TODO: add useful links]
 
