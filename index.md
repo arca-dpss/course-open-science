@@ -41,7 +41,8 @@ Consigliamo di installare i seguenti software prima dell'inizio del corso.
 # Materiali
 
 - [TODO: add link to slides]
-- The Open Science Manual https://arca-dpss.github.io/manual-open-science/ ([PDF](https://arca-dpss.github.io/manual-open-science/manual-open-science.pdf))
+- The Open Science Manual: Make Your Scientific Research Accessible and Reproducible
+ ([Link](https://arca-dpss.github.io/manual-open-science/) web version e [PDF](https://arca-dpss.github.io/manual-open-science/manual-open-science.pdf) version)
 - [TODO: add link to exercises]
 - [TODO: add useful links]
 
