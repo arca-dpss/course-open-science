@@ -18,7 +18,6 @@ L’Open Science sta diventando il gold standard per la ricerca scientifica di a
 
 # Orari
 
-<div style="text-align:center">
 
 | Giorno | Orario | Aula (CLA)|
 |:-------|:------:|:-----:|
@@ -26,7 +25,7 @@ L’Open Science sta diventando il gold standard per la ricerca scientifica di a
 | Martedì 21 giugno | 9:00 - 13:00 e 14:00 - 18:00 | LAB 3D |
 | Mercoledì 22 giugno | 14:00 - 18:00 | LAB 3D |
 
-</div>
+
 
 
 
