@@ -44,7 +44,7 @@ consiglia di installare prima dell’inizio del corso.
 # Orari edizione 2022
 
 | Giorno | Orario | Aula (CLA)|
-|-------|------|-----|
+| :--- | :--- | :--- |
 | Lunedì 20 giugno | 9:00-13:00, 14:00-18:00 | LAB 2A |
 | Martedì 21 giugno | 9:00-13:00, 14:00-18:00 | LAB 3D |
 | Mercoledì 22 giugno | 14:00-18:00 | LAB 3D |
